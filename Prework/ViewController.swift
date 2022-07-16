@@ -10,6 +10,9 @@ import UIKit
 let skyBlue = UIColor(#colorLiteral(red: 0.5242809057, green: 0.8134652972, blue: 0.8915704489, alpha: 1))
 let lemonYellow = UIColor(#colorLiteral(red: 0.8687206507, green: 1, blue: 0.4846069217, alpha: 1))
 let steelGray = UIColor(#colorLiteral(red: 0.5672130585, green: 0.6529123187, blue: 0.6875218749, alpha: 1))
+let magenta = UIColor(#colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1))
+let orange = UIColor(#colorLiteral(red: 0.9411764741, green: 0.4980392158, blue: 0.3529411852, alpha: 1))
+let brightGreen = UIColor(#colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1))
 var defaultBackgroundColor = skyBlue
 var defaultLabelText = ""
 var defaultLabelTextColor = UIColor.black
@@ -28,7 +31,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         LabelTextField.delegate = self // idk why though!
     }
     
-    let colors = [skyBlue, lemonYellow, steelGray]
+    let colors = [skyBlue, lemonYellow, steelGray, magenta, orange, brightGreen]
     
     @IBOutlet weak var TextLabel: UILabel!
     @IBOutlet weak var LabelTextField: UITextField!
@@ -73,10 +76,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
 //    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if (textField.text != nil || textField.text != "") {
-            TextLabel.text = textField.text!
+        let userInput = textField.text
+        if (userInput != nil && !userInput!.isEmpty) {
+            TextLabel.text = userInput!
         }
-        else {
+        else if (userInput!.isEmpty) {
             TextLabel.text = defaultLabelText
         }
                 
